@@ -1,58 +1,150 @@
+/* PALETA DE CORES SUAVE */
+:root {
+    --accent-color: #7A2828; /* Bordô Escuro Suave */
+    --light-accent: #E0B4B4; /* Rosa pálido para destaque aberto */
+    --background-color: #fcfcfc;
+    --text-color: #333;
+    --sidebar-bg: #404040; /* Cinza Escuro para o menu */
+    --border-color: #ddd;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     margin: 0; 
-    background-color: #f4f4f9;
-    color: #333;
-    padding-top: 60px; /* Espaço para o menu fixo */
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex; /* Habilita layout flexível */
+}
+
+/* LAYOUT PRINCIPAL E SIDEBAR */
+.sidebar {
+    width: 220px;
+    background-color: var(--sidebar-bg);
+    color: white;
+    padding-top: 20px;
+    height: 100vh;
+    position: fixed;
+    overflow-y: auto;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.main-content {
+    margin-left: 220px; /* Cria espaço para a sidebar */
+    flex-grow: 1;
+    padding: 20px;
 }
 
 .container {
     max-width: 900px;
-    margin: auto;
+    margin: 20px auto;
     background: white;
     padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
+/* TÍTULOS E ACENTOS */
 h1 {
-    color: #A30000; 
+    color: var(--accent-color); 
     text-align: center;
     margin-bottom: 30px;
-    border-bottom: 2px solid #A30000;
-    padding-bottom: 10px;
+    border-bottom: 2px solid var(--light-accent);
+    padding-bottom: 15px;
 }
 
 h2 {
-    color: #555;
-    border-left: 5px solid #A30000;
+    color: var(--accent-color);
+    border-left: 5px solid var(--accent-color);
     padding-left: 10px;
-    margin-top: 25px;
+    margin-top: 30px;
 }
 
-details {
+.tema {
+    font-size: 1.1em;
+    color: var(--accent-color);
     margin-bottom: 15px;
-    border: 1px solid #ddd;
+    display: block;
+    font-weight: bold;
+}
+
+p, ul, .citation {
+    margin-bottom: 15px; /* Mais espaço entre parágrafos */
+}
+
+/* MENU LATERAL (SIDEBAR) ESTILOS */
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar a {
+    color: #ccc;
+    text-decoration: none;
+    display: block;
+    padding: 10px 20px;
+    transition: background-color 0.3s, color 0.3s;
+    font-weight: 500;
+}
+
+.sidebar a:hover {
+    background-color: #555;
+    color: white;
+}
+
+/* Submenu (Biografias) */
+.sidebar ul ul {
+    background-color: #333;
+    padding-left: 10px;
+    display: none; /* Esconde submenus por padrão */
+}
+
+.sidebar li.has-submenu > a {
+    cursor: pointer;
+    position: relative;
+}
+
+.sidebar li.has-submenu > a::after {
+    content: '▼';
+    font-size: 0.7em;
+    position: absolute;
+    right: 15px;
+    transition: transform 0.3s;
+}
+
+.sidebar li.has-submenu.open > a::after {
+    transform: rotate(180deg);
+}
+
+/* Detalhes Colapsáveis */
+details {
+    margin-bottom: 20px; /* Mais espaço */
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     background-color: #fff;
-    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 details[open] {
-    background-color: #ffeaea;
-    border-color: #A30000;
+    background-color: var(--light-accent);
+    border-color: var(--accent-color);
 }
 
 summary {
-    padding: 15px;
+    padding: 18px 15px;
     font-weight: bold;
     cursor: pointer;
     outline: none;
-    background-color: #f0f0f0;
+    background-color: #f7f7f7;
     border-radius: 8px;
     list-style: none;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.3s;
+}
+
+summary:hover {
+    background-color: #eee;
 }
 
 summary::-webkit-details-marker {
@@ -60,79 +152,28 @@ summary::-webkit-details-marker {
 }
 
 .content {
-    padding: 15px;
-    border-top: 1px solid #eee;
+    padding: 20px;
 }
 
 .citation {
     font-style: italic;
     color: #6a6a6a;
-    margin-top: 10px;
-    display: block;
+    margin-top: 15px;
+    border-top: 1px dashed #eee;
+    padding-top: 10px;
 }
 
-.tema {
-    font-size: 1.1em;
-    color: #A30000;
-    margin-bottom: 10px;
-    display: block;
-}
-
-ul {
-    padding-left: 20px;
-}
-
-li {
-    margin-bottom: 5px;
-}
-
-/* Estilos para o Menu de Navegação */
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: #333;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    padding: 10px 0;
-}
-
-.navbar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-}
-
-.navbar ul li {
-    display: inline;
-    margin: 0 15px;
-}
-
-.navbar ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 5px 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.navbar ul li a:hover {
-    background-color: #A30000;
-}
-
-/* Estilo para o botão de Retorno */
+/* Botão de Retorno */
 .back-button-container {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 40px;
     margin-bottom: 20px;
 }
 
 .back-button {
-    background-color: #A30000;
+    background-color: var(--accent-color);
     color: white;
-    padding: 10px 20px;
+    padding: 10px 25px;
     text-decoration: none;
     border-radius: 5px;
     font-weight: bold;
@@ -141,5 +182,5 @@ li {
 }
 
 .back-button:hover {
-    background-color: #800000;
+    background-color: #5A1F1F; /* Bordô mais escuro */
 }
