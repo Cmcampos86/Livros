@@ -9,20 +9,26 @@
 <body>
 
 <div class="sidebar">
+    <div class="sidebar-header" id="menu-toggle-button">☰ MENU</div>
     <ul>
         <li><a href="index.html">Início</a></li>
         <li class="has-submenu">
             <a id="submenu-toggle">Biografias</a>
             <ul id="submenu-biografias">
                 <li><a href="biografias/pearl_jam.html">Pearl Jam</a></li>
-                <li><a href="biografias/nirvana.html">Nirvana (Em breve)</a></li>
-                <li><a href="#">Led Zeppelin (Em breve)</a></li>
             </ul>
         </li>
-        </ul>
+    </ul>
 </div>
 
 <script>
+    // 1. Toggle principal do menu lateral em mobile
+    document.getElementById('menu-toggle-button').addEventListener('click', function() {
+        const sidebar = this.parentElement;
+        sidebar.classList.toggle('open');
+    });
+
+    // 2. Toggle do submenu Biografias
     document.getElementById('submenu-toggle').addEventListener('click', function() {
         const submenu = document.getElementById('submenu-biografias');
         const parentLi = this.parentElement;
