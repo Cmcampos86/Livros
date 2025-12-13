@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arquivo de Biografias de Rock</title>
-    <!-- Referência ao CSS no subdiretório 'css' -->
     <link rel="stylesheet" href="css/style.css"> 
     <style>
         /* Estilos específicos do Index */
@@ -16,46 +15,68 @@
         }
         .bio-list li a {
             font-size: 1.5em;
-            color: #A30000;
+            color: var(--accent-color);
             text-decoration: none;
             display: block;
             padding: 15px;
             margin-bottom: 10px;
-            border: 2px solid #A30000;
+            border: 2px solid var(--light-accent);
             border-radius: 8px;
             transition: background-color 0.3s, color 0.3s;
         }
         .bio-list li a:hover {
-            background-color: #A30000;
+            background-color: var(--accent-color);
             color: white;
         }
     </style>
 </head>
 <body>
 
-<!-- Menu de Navegação Fixo (Navbar) -->
-<div class="navbar">
+<!-- MENU LATERAL (SIDEBAR) -->
+<div class="sidebar">
     <ul>
-        <li><a href="index.html">Início (Index)</a></li>
-        <li><a href="biografias/pearl_jam.html">Pearl Jam</a></li>
-        <li><a href="biografias/nirvana.html">Nirvana</a></li>
-        <li><a href="#">Opção 3</a></li>
+        <li><a href="index.html">Início</a></li>
+        <li class="has-submenu">
+            <a id="submenu-toggle">Biografias</a>
+            <ul id="submenu-biografias">
+                <li><a href="biografias/pearl_jam.html">Pearl Jam</a></li>
+                <li><a href="biografias/nirvana.html">Nirvana (Em breve)</a></li>
+                <li><a href="#">Led Zeppelin (Em breve)</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Opções do Site</a></li>
     </ul>
 </div>
 
-<div class="container">
-    <h1>BEM-VINDO AO ARQUIVO DE BIOGRAFIAS DETALHADAS DE ROCK</h1>
-    
-    <h2>Selecione uma Biografia para Ler:</h2>
-    
-    <ul class="bio-list">
-        <!-- O caminho agora aponta para a pasta /biografias -->
-        <li><a href="biografias/pearl_jam.html">Pearl Jam: Long Road - A Trilha Sonora de uma Geração</a></li>
-        <li><a href="biografias/nirvana.html">Nirvana (Conteúdo a ser adicionado)</a></li>
-        <li><a href="#">Led Zeppelin (Conteúdo a ser adicionado)</a></li>
-    </ul>
-    
+<div class="main-content">
+    <div class="container">
+        <h1>BEM-VINDO AO ARQUIVO DE BIOGRAFIAS DETALHADAS DE ROCK</h1>
+        
+        <h2>Selecione uma Biografia para Ler:</h2>
+        
+        <ul class="bio-list">
+            <li><a href="biografias/pearl_jam.html">Pearl Jam: Long Road - A Trilha Sonora de uma Geração</a></li>
+            <li><a href="#">Nirvana (Conteúdo a ser adicionado)</a></li>
+            <li><a href="#">Led Zeppelin (Conteúdo a ser adicionado)</a></li>
+        </ul>
+        
+    </div>
 </div>
+
+<script>
+    document.getElementById('submenu-toggle').addEventListener('click', function() {
+        const submenu = document.getElementById('submenu-biografias');
+        const parentLi = this.parentElement;
+        
+        if (submenu.style.display === 'block') {
+            submenu.style.display = 'none';
+            parentLi.classList.remove('open');
+        } else {
+            submenu.style.display = 'block';
+            parentLi.classList.add('open');
+        }
+    });
+</script>
 
 </body>
 </html>
