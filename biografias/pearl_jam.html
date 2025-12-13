@@ -9,6 +9,7 @@
 <body>
 
 <div class="sidebar">
+    <div class="sidebar-header" id="menu-toggle-button">☰ MENU</div>
     <ul>
         <li><a href="../index.html">Início</a></li>
         <li class="has-submenu">
@@ -19,7 +20,7 @@
                 <li><a href="#">Led Zeppelin (Em breve)</a></li>
             </ul>
         </li>
-        </ul>
+    </ul>
 </div>
 
 <div class="main-content">
@@ -30,8 +31,7 @@
             <a href="../index.html" class="back-button">← Voltar para a Página Principal</a>
         </div>
 
-        <details>
-            <summary>INTRODUÇÃO E CONTEXTO (PREFÁCIO)</summary>
+        <details> <summary>INTRODUÇÃO E CONTEXTO (PREFÁCIO)</summary>
             <div class="content">
                 <span class="tema">Tese Principal: A evolução da carreira de um artista e a contradição inerente ao Pearl Jam.</span>
                 
@@ -118,7 +118,13 @@
 </div>
 
 <script>
-    // Script para manter a funcionalidade do submenu na página de biografia
+    // 1. Toggle principal do menu lateral em mobile
+    document.getElementById('menu-toggle-button').addEventListener('click', function() {
+        const sidebar = this.parentElement;
+        sidebar.classList.toggle('open');
+    });
+
+    // 2. Toggle do submenu Biografias 
     document.getElementById('submenu-toggle').addEventListener('click', function() {
         const submenu = document.getElementById('submenu-biografias');
         const parentLi = this.parentElement;
