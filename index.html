@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Livros — Resumos</title>
+  <style>
+    :root { --max: 980px; }
+    body { font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; margin:0; background:#0b0c10; color:#e9e9e9; }
+    header { padding: 28px 16px 10px; }
+    .wrap { max-width: var(--max); margin: 0 auto; }
+    h1 { margin:0; font-size: 1.5rem; letter-spacing: .2px; }
+    p.sub { margin: 8px 0 0; color:#bdbdbd; }
+    main { padding: 14px 16px 26px; }
+    .grid { display:grid; grid-template-columns: 1fr; gap: 12px; }
+    @media (min-width: 780px){ .grid{ grid-template-columns: 1fr 1fr; } }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 14px;
+      padding: 14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+    .card h2 { margin: 0 0 6px; font-size: 1.1rem; }
+    .card p { margin: 0 0 10px; color:#cfcfcf; line-height:1.45; }
+    .meta { font-size: .9rem; color:#a9a9a9; margin-bottom: 10px; }
+
+    a.btn{
+      display:inline-block;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.06);
+      color:#fff;
+      text-decoration:none;
+      font-weight:700;
+    }
+    a.btn:hover { background: rgba(255,255,255,.10); }
+
+    details { margin-top: 10px; border-top: 1px dashed rgba(255,255,255,.18); padding-top: 10px; }
+    summary { cursor:pointer; font-weight:700; color:#fff; }
+    ul { margin: 8px 0 0 18px; color:#cfcfcf; }
+    li { margin: 4px 0; }
+
+    footer { padding: 14px 16px 22px; color:#9b9b9b; font-size:.9rem; }
+    .pill { display:inline-block; margin-left:8px; font-size:.8rem; padding: 2px 8px; border-radius:999px; background: rgba(255,255,255,.10); color:#eaeaea; }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <h1>📚 Livros — Resumos <span class="pill">HTML + Collapses</span></h1>
+      <p class="sub">Página inicial com menu. Clique e leia. Feito para consulta rápida.</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <div class="grid">
+
+        <section class="card">
+          <h2>🎸 Long Road — Pearl Jam (Steven Hyden)</h2>
+          <p class="meta">Capítulos 1–3 (com collapses), formato consultável</p>
+          <p>Resumos completos por capítulo + quem é quem + bandas/músicas citadas + ideia central.</p>
+          <a class="btn" href="./pearljam.html">Abrir Pearl Jam</a>
+
+          <details>
+            <summary>O que tem dentro</summary>
+            <ul>
+              <li>Cap. 1 — “Falling Down”</li>
+              <li>Cap. 2 — “Footsteps”</li>
+              <li>Cap. 3 — “Porch”</li>
+            </ul>
+          </details>
+        </section>
+
+        <section class="card">
+          <h2>➕ Próximos livros</h2>
+          <p class="meta">Espaço reservado</p>
+          <p>Quando você quiser, eu crio mais páginas no mesmo padrão e adiciono aqui no menu.</p>
+          <a class="btn" href="#" onclick="alert('Quando tiver outro livro, a gente cria: outro-livro.html e linka aqui 🙂'); return false;">Como adicionar</a>
+
+          <details>
+            <summary>Modelo de organização</summary>
+            <ul>
+              <li>index.html (menu)</li>
+              <li>pearljam.html</li>
+              <li>outro-livro.html</li>
+              <li>…</li>
+            </ul>
+          </details>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      Dica: para adicionar um novo livro, crie <strong>nome-do-livro.html</strong> e coloque um card novo no <strong>index.html</strong>.
+    </div>
+  </footer>
+</body>
+</html>
