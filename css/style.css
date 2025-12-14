@@ -7,10 +7,6 @@
     --sidebar-bg: #34495e; /* Azul Escuro para o menu (mais escuro que o accent) */
     --border-color: #ddd;
     --hover-bg-sidebar: #4e6a88; /* Tom médio para hover no menu */
-
-    /* NOVO: Definições de Largura para Colapso */
-    --sidebar-width: 220px; /* Largura normal */
-    --sidebar-collapsed-width: 60px; /* Largura do menu minimizado */
 }
 
 body {
@@ -24,8 +20,7 @@ body {
 
 /* LAYOUT PRINCIPAL E SIDEBAR (DESKTOP) */
 .sidebar {
-    /* Largura ajustada para usar a variável */
-    width: var(--sidebar-width);
+    width: 220px;
     background-color: var(--sidebar-bg);
     color: white;
     padding-top: 20px;
@@ -33,7 +28,6 @@ body {
     position: fixed;
     overflow-y: auto;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    transition: width 0.3s ease; /* Adicionada transição suave */
 }
 
 /* NOVO: Cabeçalho do menu (Oculto em desktop) */
@@ -42,11 +36,9 @@ body {
 }
 
 .main-content {
-    /* Largura ajustada para usar a variável */
-    margin-left: var(--sidebar-width); /* Cria espaço para a sidebar */
+    margin-left: 220px; /* Cria espaço para a sidebar */
     flex-grow: 1;
     padding: 20px;
-    transition: margin-left 0.3s ease; /* Adicionada transição suave */
 }
 
 .container {
@@ -58,7 +50,36 @@ body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
-/* TÍTULOS E ACENTOS... (MANTIDO O RESTO) */
+/* TÍTULOS E ACENTOS */
+h1 {
+    color: var(--accent-color); 
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--light-accent);
+    padding-bottom: 15px;
+}
+
+h2 {
+    color: var(--accent-color);
+    border-left: 5px solid var(--accent-color);
+    padding-left: 10px;
+    margin-top: 30px;
+}
+
+.tema {
+    font-size: 1.1em;
+    color: var(--accent-color);
+    margin: 15px 0; 
+    display: block;
+    font-weight: bold;
+    padding: 8px;
+    background-color: var(--light-accent); 
+    border-radius: 4px;
+}
+
+p, ul {
+    margin-bottom: 20px; 
+}
 
 /* MENU LATERAL (SIDEBAR) ESTILOS */
 .sidebar ul {
@@ -74,10 +95,6 @@ body {
     padding: 12px 20px; 
     transition: background-color 0.3s, color 0.3s;
     font-weight: 500;
-    /* Para Colapso */
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-overflow: ellipsis; 
 }
 
 .sidebar a:hover {
@@ -109,53 +126,90 @@ body {
     transform: rotate(180deg);
 }
 
-/* Detalhes Colapsáveis... (MANTIDO O RESTO) */
+/* Detalhes Colapsáveis */
+details {
+    margin-bottom: 25px; 
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); 
+}
 
-/* ********************************************* */
-/* NOVO: ESTILOS DE COLAPSO (SIDEBAR MINIMIZADA) */
-/* ********************************************* */
+details[open] {
+    background-color: #f9f9f9; 
+    border-color: var(--light-accent);
+}
 
-/* 1. Botão de Toggle (Desktop) */
-.toggle-button {
-    background-color: #2c3e50;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    cursor: pointer;
-    font-size: 1.2em;
+summary {
+    padding: 18px 15px;
     font-weight: bold;
-    border-bottom: 1px solid #4e6a88;
+    cursor: pointer;
+    outline: none;
+    background-color: var(--light-accent); 
+    color: var(--accent-color);
+    border-radius: 8px;
+    list-style: none;
+    border-bottom: 1px solid var(--light-accent);
+    transition: background-color 0.3s, border-color 0.3s;
 }
 
-
-/* 2. Sidebar Colapsada */
-.sidebar.collapsed {
-    width: var(--sidebar-collapsed-width); /* Reduz a largura */
+summary:hover {
+    background-color: #e0e6e7; 
 }
 
-/* 3. Conteúdo Principal com Margem Ajustada */
-.main-content.collapsed-margin {
-    margin-left: var(--sidebar-collapsed-width); /* Mude a margem do conteúdo para o novo tamanho */
-}
-
-/* 4. Ocultar detalhes internos no estado colapsado */
-.sidebar.collapsed li a,
-.sidebar.collapsed li.has-submenu > a {
-    /* Ajusta o padding para centralizar visualmente */
-    padding: 12px 0; 
-    text-align: center;
-}
-
-/* Esconde a seta de submenu no modo colapsado */
-.sidebar.collapsed li.has-submenu > a::after {
+summary::-webkit-details-marker {
     display: none;
 }
 
-/* Esconde o submenu quando colapsado */
-.sidebar.collapsed ul ul {
-    display: none !important; 
+.content {
+    padding: 25px; 
 }
 
+.citation {
+    display: none; 
+}
+
+/* Botão de Retorno */
+.back-button-container {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.back-button {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 12px 30px; 
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    display: inline-block;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.back-button:hover {
+    background-color: #1f2a37; 
+}
+
+/* Estilos específicos para a lista de index (bio-list) - Mantido para o caso de querer reativar o conteúdo */
+.bio-list li a {
+    font-size: 1.5em;
+    color: var(--accent-color) !important;
+    text-decoration: none;
+    display: block;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 2px solid var(--light-accent);
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.bio-list li a:hover {
+    background-color: var(--accent-color) !important;
+    color: white !important;
+    border-color: var(--accent-color) !important;
+}
 
 /* --- RESPONSIVIDADE (MOBILE) --- */
 /* Aplica essas regras quando a largura da tela é no máximo 768px (tablets e celulares) */
@@ -164,11 +218,6 @@ body {
         display: block; /* Stacks elements vertically */
     }
 
-    /* Oculta o botão de toggle de desktop em mobile */
-    .toggle-button {
-        display: none;
-    }
-    
     /* Sidebar se torna a barra superior e se expande/recolhe */
     .sidebar {
         width: 100%;
@@ -205,11 +254,6 @@ body {
     .main-content {
         margin-left: 0;
         padding: 10px; /* Reduz o padding para mobile */
-    }
-    
-    /* Garante que a margem de colapso de desktop não interfira em mobile */
-    .main-content.collapsed-margin {
-        margin-left: 0;
     }
 
     /* Ajusta o container para ocupar a tela e remove sombras/bordas para um look mais nativo */
