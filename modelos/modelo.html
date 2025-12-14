@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Título da Página</title>
+    <link rel="stylesheet" href="../css/style.css"> 
+</head>
+<body>
+
+<div class="sidebar">
+    <div class="sidebar-header" id="menu-toggle-button">☰ MENU</div>
+    <ul>
+        <li><a href="../index.html">Início</a></li>
+        <li class="has-submenu">
+            <a id="submenu-toggle">Nome do Submenu</a>
+            <ul id="submenu-biografias">
+                <li><a href="pagina1.html">Item 1</a></li>
+                <li><a href="pagina2.html">Item 2</a></li>
+                <li><a href="#">Item 3</a></li>
+            </ul>
+        </li>
+        </ul>
+</div>
+
+<div class="main-content">
+    <div class="container">
+        <h1>Título do Conteúdo Principal</h1>
+        
+        <div class="back-button-container">
+            <a href="../index.html" class="back-button">← Voltar para a Página Principal</a>
+        </div>
+
+        <details> 
+            <summary>Nome da Seção 1</summary>
+            <div class="content">
+                <p>Insira o conteúdo desta seção aqui.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>Nome da Seção 2</summary>
+            <div class="content">
+                <p>Insira o conteúdo desta seção aqui.</p>
+            </div>
+        </details>
+
+        <div class="back-button-container">
+            <a href="../index.html" class="back-button">← Voltar para a Página Principal</a>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    // 1. Toggle principal do menu lateral em mobile
+    document.getElementById('menu-toggle-button').addEventListener('click', function() {
+        const sidebar = this.parentElement;
+        sidebar.classList.toggle('open');
+    });
+
+    // 2. Toggle do submenu Biografias 
+    document.getElementById('submenu-toggle').addEventListener('click', function() {
+        // Assume-se que o ID 'submenu-biografias' será reutilizado/adaptado
+        const submenu = document.getElementById('submenu-biografias');
+        const parentLi = this.parentElement;
+        
+        if (submenu.style.display === 'block') {
+            submenu.style.display = 'none';
+            parentLi.classList.remove('open');
+        } else {
+            submenu.style.display = 'block';
+            parentLi.classList.add('open');
+        }
+    });
+</script>
+
+</body>
+</html>
