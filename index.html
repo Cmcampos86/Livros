@@ -8,13 +8,8 @@
 </head>
 <body>
 
-<div class="sidebar" id="sidebar">
-    <div class="toggle-button" id="desktop-toggle-button">
-        &lt;&lt; RECOLHER
-    </div>
-    
+<div class="sidebar">
     <div class="sidebar-header" id="menu-toggle-button">☰ MENU</div>
-    
     <ul>
         <li><a href="index.html">Início</a></li>
         
@@ -34,99 +29,36 @@
     </ul>
 </div>
 
-<div class="main-content" id="main-content">
-    
-    <div class="container">
-        <h1>Arquivo de Biografias de Rock</h1>
-        <p>Seu conteúdo principal (capa, introdução, etc.) vai aqui.</p>
-        </div>
-    
-</div>
-
 <script>
-    // 1. Alternância da Sidebar para DESKTOP (Colapso/Expansão)
-    const sidebar = document.getElementById('sidebar');
-    const mainContent = document.getElementById('main-content');
-    const desktopToggleButton = document.getElementById('desktop-toggle-button');
-
-    if (desktopToggleButton) {
-        desktopToggleButton.addEventListener('click', function() {
-            // Alterna a classe 'collapsed' na sidebar
-            sidebar.classList.toggle('collapsed');
-            
-            // Alterna a classe que ajusta a margem do conteúdo principal
-            mainContent.classList.toggle('collapsed-margin');
-            
-            // Muda o texto do botão
-            if (sidebar.classList.contains('collapsed')) {
-                this.innerHTML = '&gt;&gt; EXPANDIR';
-            } else {
-                this.innerHTML = '&lt;&lt; RECOLHER';
-            }
-        });
-    }
-
-    // 2. Toggle principal do menu lateral em MOBILE (usa o '☰ MENU')
+    // 1. Toggle principal do menu lateral em mobile
     document.getElementById('menu-toggle-button').addEventListener('click', function() {
-        // Usa 'open' apenas se a tela for pequena
-        if (window.innerWidth <= 768) { 
-            sidebar.classList.toggle('open');
-            // Garante que o modo desktop não esteja ativo no mobile
-            sidebar.classList.remove('collapsed');
-            mainContent.classList.remove('collapsed-margin');
-        }
+        const sidebar = this.parentElement;
+        sidebar.classList.toggle('open');
     });
 
-    // Função para fechar outros submenus
-    function closeOtherSubmenus(currentSubmenuId) {
-        const allSubmenus = ['submenu-biografias', 'submenu-autoajuda'];
-        allSubmenus.forEach(id => {
-            if (id !== currentSubmenuId) {
-                const submenu = document.getElementById(id);
-                const parentLi = document.getElementById('submenu-toggle-' + id.split('-')[1]).parentElement;
-                if (submenu && parentLi) {
-                    submenu.style.display = 'none';
-                    parentLi.classList.remove('open');
-                }
-            }
-        });
-    }
-
-    // 3. Toggle do submenu Biografias (Adaptado para Colapso/Mobile)
+    // 2. Toggle do submenu Biografias
     document.getElementById('submenu-toggle-biografias').addEventListener('click', function() {
         const submenu = document.getElementById('submenu-biografias');
         const parentLi = this.parentElement;
         
-        // Se a sidebar estiver colapsada em desktop, não abre o submenu
-        if (sidebar.classList.contains('collapsed') && window.innerWidth > 768) {
-            return;
-        }
-
         if (submenu.style.display === 'block') {
             submenu.style.display = 'none';
             parentLi.classList.remove('open');
         } else {
-            closeOtherSubmenus('submenu-biografias');
             submenu.style.display = 'block';
             parentLi.classList.add('open');
         }
     });
 
-    // 4. Toggle do submenu Autoajuda (Adaptado para Colapso/Mobile)
+    // 3. NOVO Toggle do submenu Autoajuda
     document.getElementById('submenu-toggle-autoajuda').addEventListener('click', function() {
         const submenu = document.getElementById('submenu-autoajuda');
         const parentLi = this.parentElement;
-
-        // Se a sidebar estiver colapsada em desktop, não abre o submenu
-        if (sidebar.classList.contains('collapsed') && window.innerWidth > 768) {
-            return;
-        }
-
+        
         if (submenu.style.display === 'block') {
             submenu.style.display = 'none';
             parentLi.classList.remove('open');
         } else {
-            closeOtherSubmenus('submenu-autoajuda');
             submenu.style.display = 'block';
             parentLi.classList.add('open');
         }
