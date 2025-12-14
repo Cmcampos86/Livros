@@ -12,10 +12,18 @@
     <div class="sidebar-header" id="menu-toggle-button">☰ MENU</div>
     <ul>
         <li><a href="index.html">Início</a></li>
+        
         <li class="has-submenu">
-            <a id="submenu-toggle">Biografias</a>
+            <a id="submenu-toggle-biografias">Biografias</a>
             <ul id="submenu-biografias">
                 <li><a href="biografias/pearl_jam.html">Pearl Jam</a></li>
+            </ul>
+        </li>
+        
+        <li class="has-submenu">
+            <a id="submenu-toggle-autoajuda">Autoajuda</a>
+            <ul id="submenu-autoajuda">
+                <li><a href="autoajuda/pare_de_se_sabotar.html">Pare de se sabotar e dê a volta por cima</a></li>
             </ul>
         </li>
     </ul>
@@ -29,8 +37,22 @@
     });
 
     // 2. Toggle do submenu Biografias
-    document.getElementById('submenu-toggle').addEventListener('click', function() {
+    document.getElementById('submenu-toggle-biografias').addEventListener('click', function() {
         const submenu = document.getElementById('submenu-biografias');
+        const parentLi = this.parentElement;
+        
+        if (submenu.style.display === 'block') {
+            submenu.style.display = 'none';
+            parentLi.classList.remove('open');
+        } else {
+            submenu.style.display = 'block';
+            parentLi.classList.add('open');
+        }
+    });
+
+    // 3. NOVO Toggle do submenu Autoajuda
+    document.getElementById('submenu-toggle-autoajuda').addEventListener('click', function() {
+        const submenu = document.getElementById('submenu-autoajuda');
         const parentLi = this.parentElement;
         
         if (submenu.style.display === 'block') {
